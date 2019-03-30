@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GifTastic App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/ico" href="assets/images/aicon.jpeg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css">
+    <iframe width="0" height = "0" src="assets/audio/Avengers.mp3" loop= "true" frameborder="0" allowfullscreen></iframe>
+</head>
+<body>
+    
+<div id = "game">
+    <div id="buttonsArea"></div>
+    
+
+    <form id="search-form">
+        <!-- <div id = "button"> -->
+        <label for="search-input" id="button"><b>Add in your Search</b></label>
+        <input type="text" id="search-input"><br>
+        <input id="addSearch" type="Submit" value="Submit">
+        <input id="deleteLastGif" type="Submit" value="Delete last gif">
+        <input id="restartApp" type="Submit" value="Restart App">
+       
+
+    </form>
+
+    <div id="searches"></div>
+</div>
+
+
+    <script src="./assets/javascript/app.js" type="text/javascript"></script>
+</body>
+</html>

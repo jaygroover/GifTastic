@@ -1,0 +1,31 @@
+body{
+    background-image:url(../images/marvel\ opening\ 640.gif);
+    background-size:cover;
+    background-attachment: fixed;
+    
+
+}
+
+#game_container{
+    width: 500px;
+    height:500px;
+    border:solid;
+    opacity: .45;
+    background-color:white;
+
+}
+
+
+
+h1{
+color: black;
+
+}
+
+
+#button{
+    color: white;
+
+
+
+}
