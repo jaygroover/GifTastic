@@ -2,30 +2,13 @@ body{
     background-image:url(../images/Mlogo.gif);
     background-size:cover;
     background-attachment: fixed;
-    
+    }
 
-}
-
-#game_container{
-    width: 500px;
-    height:500px;
-    border:solid;
-    opacity: .45;
-    background-color:white;
-
-}
+    h1{
+        color: white;
+        font-weight: bold;
+    }
+        
 
 
 
-h1{
-color: black;
-
-}
-
-
-#button{
-    color: white;
-
-
-
-}

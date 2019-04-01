@@ -6,9 +6,9 @@ $(document).ready(function(){
     timeOut();
    
     function timeOut () {
-     $("#input").hide();
+     $("#wrapper").hide();
      setTimeout(function(){ $("body").css("background-image","url(assets/images/avengers.png)"); }, 27000);
-     setTimeout(function(){ $("#input").show(); }, 30000);
+     setTimeout(function(){ $("#wrapper").show(); }, 30000);
 };
    
 
@@ -16,12 +16,14 @@ var displayedButtons = ["Iron-man", "Captian Marvel", "Thor", "Thanos", "Hulk", 
 
 console.log(displayedButtons);
 
+
+
 function displayImg (){
 $("#display-images").empty();
 var input = $(this).attr("data-name");
 var limit = 10;
 
- var queryURL = 'https://api.giphy.com/v1/gifs/search?q='+input+'&api_key=LCBBepXycXgqeV7p4QbDSb0vP7bVbUIX&=10';
+ var queryURL = 'https://api.giphy.com/v1/gifs/search?q='+input+'&api_key=LCBBepXycXgqeV7p4QbDSb0vP7bVbUIX';
 
 
 
@@ -34,12 +36,12 @@ $.ajax({
 
   for(var j = 0; j < limit; j++){
 
-    var displayDiv = $("<div>");
+    var displayDiv = $("<div>").css("color","blue");
     displayDiv.addClass("holder");
 
     console.log(displayDiv);
 
-    var image = $("<img>");
+    var image = $("<img>")
     image.attr("src", response.data[j].images.original_still.url);
     image.attr("data-still", response.data[j].images.original_still.url);
     image.attr("data-animate",response.data[j].images.original.url);
@@ -65,6 +67,7 @@ $.ajax({
   function renderButtons (){
 
     $("#display-buttons").empty();
+    
 
     for (var i = 0; i < displayedButtons.length; i++){
 
@@ -87,12 +90,12 @@ var animateImage = $(this).attr("data-animate");
 var stillImage = $(this).attr("data-still");
 
 
-if(state === "still"){
+if(state == "still"){
 $(this).attr("src", animateImage);
 $(this).attr("data-state", "animate");
 }
 
-else if (state === "animate"){
+else if (state == "animate"){
 
 $(this).attr("src", stillImage);
 $(this).attr("data-state", "still");
@@ -105,7 +108,7 @@ $(this).attr("data-state", "still");
 $("#submitPress").on("click", function(){
 
 var input = $("#user-input").val().trim();
-form.reset();
+
 displayedButtons.push(input);
 
 renderButtons();
