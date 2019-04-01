@@ -3,18 +3,18 @@ $(document).ready(function(){
     //This is games intro...
     //hides game play, plays intro and shows game plays features.........
    
+    timeOut();
    
-   timeOut();
-   
-   function timeOut () {
-    $("#game").hide();
-    setTimeout(function(){ $("body").css("background-image","url(assets/images/avengers.png)"); }, 27000);
-    setTimeout(function(){ $("#game").show(); }, 30000);
+    function timeOut () {
+     $("#input").hide();
+     setTimeout(function(){ $("body").css("background-image","url(assets/images/avengers.png)"); }, 27000);
+     setTimeout(function(){ $("#input").show(); }, 30000);
 };
+   
 
 var displayedButtons = ["Iron-man", "Captian Marvel", "Thor", "Thanos", "Hulk", "The Avengers", "Age of Ultron", "The Infinity Stones", "Avenger Infinity War", "Avengers Endgame"];
 
-
+console.log(displayedButtons);
 
 function displayImg (){
 $("#display-images").empty();
@@ -102,18 +102,22 @@ $(this).attr("data-state", "still");
 }
 
 
-$("#submit").on("click", function(){
+$("#submitPress").on("click", function(){
 
 var input = $("#user-input").val().trim();
-Form.reset();
+form.reset();
 displayedButtons.push(input);
-
 
 renderButtons();
 
 return false;
 
 })
+
+
+
+
+
 
 
 renderButtons();
