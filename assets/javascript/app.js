@@ -2,27 +2,26 @@ $(document).ready(function(){
 
     //This is games intro...
     //hides game play, plays intro and shows game plays features.........
+   
+   
+   timeOut();
+   
+   function timeOut () {
     $("#game").hide();
     setTimeout(function(){ $("body").css("background-image","url(assets/images/avengers.png)"); }, 27000);
     setTimeout(function(){ $("#game").show(); }, 30000);
+};
 
-var topics = ["Iron-man", "Captian America", "Thor", "Thanos", "Hulk", "The Avengers", "Age of Ultron", "The Infinity Stones", "Avenger Infinity War", "Avengers Endgame"];
+var displayedButtons = ["Iron-man", "Captian Marvel", "Thor", "Thanos", "Hulk", "The Avengers", "Age of Ultron", "The Infinity Stones", "Avenger Infinity War", "Avengers Endgame"];
 
-console.log (topics);
+
 
 function displayImg (){
 $("#display-images").empty();
 var input = $(this).attr("data-name");
 var limit = 10;
 
-var queryURL ="https://api.giphy.com/v1/gifs/search?q=" + gif +"&api_key=qMx31QXL9WMDmHU2rsENRoaZvQ1GbXME&=10";
-
-
-
-
-
-
-var gif = $(this).attr("data-name");
+ var queryURL = 'https://api.giphy.com/v1/gifs/search?q='+input+'&api_key=LCBBepXycXgqeV7p4QbDSb0vP7bVbUIX&=10';
 
 
 
@@ -31,7 +30,7 @@ console.log(queryURL);
 $.ajax({
   url: queryURL,
   method:"GET"
-}).then(function(response){
+}).done(function(response){
 
   for(var j = 0; j < limit; j++){
 
@@ -40,7 +39,7 @@ $.ajax({
 
     console.log(displayDiv);
 
-    var image = $("<div>");
+    var image = $("<img>");
     image.attr("src", response.data[j].images.original_still.url);
     image.attr("data-still", response.data[j].images.original_still.url);
     image.attr("data-animate",response.data[j].images.original.url);
@@ -50,7 +49,8 @@ $.ajax({
 
     var rating = response.data[j].rating;
     console.log(response);
-    var pRating = $("<p>").text("rating: " + rating);
+    var pRating = $("<p>").text("Rating: " + rating);
+    displayDiv.append(pRating)
 
     $("#display-images").append(displayDiv);
 
@@ -64,17 +64,17 @@ $.ajax({
 
   function renderButtons (){
 
-    $("#topics-button").empty();
+    $("#display-buttons").empty();
 
-    for (var i = 0; i < topics.length; i++){
+    for (var i = 0; i < displayedButtons.length; i++){
 
 
 
       var newButton = $("<button>")
       newButton.attr("class", "btn btn-default");
       newButton.attr("id", "input")
-      newButton.attr("data-name", topics[i]);
-      newButton.text(topics[i]);
+      newButton.attr("data-name", displayedButtons[i]);
+      newButton.text(displayedButtons[i]);
       $("#display-buttons").append(newButton);
     }
 }
@@ -104,9 +104,9 @@ $(this).attr("data-state", "still");
 
 $("#submit").on("click", function(){
 
-var input = $("user - input").val().trim();
-FormData.reset();
-topics.push(input);
+var input = $("#user-input").val().trim();
+Form.reset();
+displayedButtons.push(input);
 
 
 renderButtons();
