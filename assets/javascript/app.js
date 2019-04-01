@@ -6,13 +6,25 @@ $(document).ready(function(){
     setTimeout(function(){ $("body").css("background-image","url(assets/images/avengers.png)"); }, 27000);
     setTimeout(function(){ $("#game").show(); }, 30000);
 
-var topics = ["Iron-man","Captian America","Thor","Thanos","Hulk","The Avengers","Age of Ultron","The Infinity Stones","Avenger Infinity War","Avengers Endgame"];
+var topics = ["Iron-man", "Captian America", "Thor", "Thanos", "Hulk", "The Avengers", "Age of Ultron", "The Infinity Stones", "Avenger Infinity War", "Avengers Endgame"];
 
 console.log (topics);
 
-var gif = $(this).attr("data-name");
+function displayImg (){
+$("#display-images").empty();
+var input = $(this).attr("data-name");
+var limit = 10;
 
 var queryURL ="https://api.giphy.com/v1/gifs/search?q=" + gif +"&api_key=qMx31QXL9WMDmHU2rsENRoaZvQ1GbXME&=10";
+
+
+
+
+
+
+var gif = $(this).attr("data-name");
+
+
 
 console.log(queryURL);
 
@@ -48,6 +60,8 @@ $.ajax({
 
   });
 
+}
+
   function renderButtons (){
 
     $("#topics-button").empty();
@@ -66,32 +80,50 @@ $.ajax({
 }
 
 
+function imageChangeState(){
 
+var state = $(this).attr("data-state");
+var animateImage = $(this).attr("data-animate");
+var stillImage = $(this).attr("data-still");
+
+
+if(state === "still"){
+$(this).attr("src", animateImage);
+$(this).attr("data-state", "animate");
+}
+
+else if (state === "animate"){
+
+$(this).attr("src", stillImage);
+$(this).attr("data-state", "still");
+}
+
+
+}
+
+
+$("#submit").on("click", function(){
+
+var input = $("user - input").val().trim();
+FormData.reset();
+topics.push(input);
 
 
 renderButtons();
 
+return false;
+
+})
+
+
+renderButtons();
+
+$(document).on("click", "#input", displayImg);
+$(document).on("click", ".gif", imageChangeState);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //$("button").on("click", function(){
+  //$("button").on("click", function(){
 
 		//$("#game").hide();
 	
@@ -109,10 +141,6 @@ renderButtons();
 
       // Game key.......
      //var queryURL ="https://api.giphy.com/v1/gifs/search?q=" + movie +"&api_key=qMx31QXL9WMDmHU2rsENRoaZvQ1GbXME&=10";
-
-
-
-
 });
         
 
