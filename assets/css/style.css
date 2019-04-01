@@ -2,10 +2,11 @@ body{
     background-image:url(../images/Mlogo.gif);
     background-size:cover;
     background-attachment: fixed;
+    font-family: 'Bangers', cursive;
     }
 
     h1{
-        color: white;
+        color: rgba(158, 134, 134, 0.664);
         font-weight: bold;
     }
         
